@@ -1,153 +1,174 @@
 :root {
-  --primary-color: #121212;
-  --secondary-color: #1abc9c;
-  --text-color: #ffffff;
-  --highlight-color: #ff4081;
-  --gradient-start: #16a085;
-  --gradient-end: #2ecc71;
+  --primary-color: #080909;
+  --secondary-color: #16a085;
 }
-
 * {
+  /* Below is the standard CSS code one should add to get rid of default margins and padding which most of tge HTML elements have */
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: "Roboto", sans-serif;
   user-select: none;
 }
-
-/* Body */
 body {
-  background: linear-gradient(to bottom, var(--gradient-start), var(--gradient-end));
+  position: relative;
   min-height: 100vh;
-  color: var(--text-color);
+  text-align: center;
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
+  flex-direction: column;
+  align-items: stretch;
 }
 
-/* Header/Title */
+/* Title CSS */
 .title {
   background-color: var(--primary-color);
-  padding: 1rem 0;
-  font-size: 2rem;
-  color: var(--text-color);
-  text-transform: uppercase;
-  transition: color 0.3s ease;
+  text-align: center;
+  font-size: 1.2em;
+  padding-block: 0.5em;
+  color: #fff;
   cursor: pointer;
 }
 
-.title:hover {
-  color: var(--highlight-color);
-}
-
-/* Navbar Styles */
+/* Navbar CSS */
 .navbar {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
-  padding: 1rem;
-  background: var(--primary-color);
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-.navbar a {
-  color: var(--text-color);
-  font-weight: 600;
-  padding: 0.8rem 1.2rem;
-  border: 2px solid transparent;
-  border-radius: 8px;
-  background: var(--gradient-start);
-  transition: all 0.3s ease;
-}
-
-.navbar a:hover {
-  background: transparent;
-  border-color: var(--gradient-end);
-}
-
-.menu {
+  flex-wrap: wrap;
+  gap: 0.8em;
+  font-size: 16px;
+  min-height: 70px;
+  padding-block: 0.6em;
   background-color: var(--secondary-color);
-  border: none;
-  color: var(--text-color);
-  padding: 0.6rem 1rem;
+  transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+.navbar a {
+  all: unset;
+  cursor: pointer;
+  color: #fff;
+  font-weight: bold;
+  padding: 8px 10px;
   border-radius: 6px;
-  transition: transform 0.2s ease;
+  transition: 0.3s;
+  background-color: #1abc9c;
+}
+.navbar a:hover {
+  background-color: transparent;
+}
+.navbar #menu {
+  width: fit-content;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 8px;
+  background-color: #1abc9c;
+  color: white;
+}
+.navbar > .icon {
+  display: none;
+}
+#menu,
+#random,
+#start {
+  cursor: pointer;
 }
 
-.menu:hover {
-  transform: scale(1.1);
-}
-
-.dropdown-label {
-  color: var(--text-color);
-  font-size: 0.9rem;
-  font-weight: 600;
-  margin-right: 0.5rem;
-}
-
-/* Sorting Area */
+/* Center css */
 .center {
-  margin: 2rem auto;
-  height: 450px;
-  width: 90%;
-  background: rgba(0, 0, 0, 0.6);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-  border-radius: 10px;
-  border: 3px solid var(--secondary-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin: 0 auto;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; /* Added shadow to make page border free */
+  height: 420px;
+  width: 410px;
+  max-height: 731px;
 }
-
 .array {
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
+  min-height: 100%;
   height: 100%;
-  width: 100%;
   padding: 1rem;
-  gap: 2px;
+  flex-direction: row;
 }
-
 .cell {
-  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  flex: 0.5;
+  width: 0.000001%;
+  margin: 1px;
   background-color: #d6d6d6;
-  transition: background-color 0.4s, transform 0.4s ease;
-  border-radius: 2px;
+  resize: horizontal;
+  position: relative;
+  transition: all 0.4s ease-in;
 }
-
 .cell.done {
-  background: var(--gradient-end);
+  background-color: #9cec5b;
+  border-color: #12150f;
+  color: white;
+  transition: all 0.4s ease-out;
 }
-
 .cell.visited {
-  background: var(--highlight-color);
+  border-color: #6184d8;
+  background-color: #6184d8;
+  color: white;
+  transition: 0.5s;
 }
-
 .cell.current {
-  background: var(--secondary-color);
-  transform: scaleY(1.2);
+  border-color: #50c5b7;
+  background-color: #50c5b7;
+  color: white;
+  transition: all 0.4s ease-out;
+}
+.cell.min {
+  background-color: #ff1493;
+  border-color: #ff1493;
+  color: white;
+  transition: all 0.4s ease-out;
 }
 
-/* Footer Styles */
-.footer {
+/* Footer CSS */
+.fa.fa-heart {
+  color: #eb2c13;
+}
+footer {
   text-align: center;
-  padding: 1.5rem;
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.8);
+  font-size: 18px;
+  color: #2c3e50;
+  padding: 1.6em;
+}
+.footer > p:nth-child(1) {
+  margin-bottom: 0.6em;
+}
+.link {
+  text-decoration: none;
+  font-weight: bold;
+  color: #b752ff;
+  font-size: 20px;
 }
 
-.footer p {
-  margin: 0.5rem 0;
+@media screen and (max-width: 600px) {
+  .navbar {
+    gap: 0.4em;
+  }
+  .title {
+    font-size: 17px;
+  }
+  .navbar *,
+  .navbar a {
+    font-size: 14px;
+  }
+  .footer {
+    font-size: 18px;
+  }
+  a#random {
+    order: 4;
+  }
+  a.start {
+    order: 5;
+  }
 }
-
-.footer a {
-  color: var(--highlight-color);
-  margin: 0 0.5rem;
-  font-size: 1.5rem;
-  transition: color 0.3s ease;
-}
-
-.footer a:hover {
-  color: var(--secondary-color);
+@media screen and (max-width: 550px) {
+  .center {
+    width: 95%;
+  }
 }
